@@ -2,6 +2,7 @@ import os
 from matplotlib.pyplot import yticks
 import numpy as np
 import tensorflow as tf
+import semi_preprocess as make_data
 import googleapiclient.discovery
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="cred.json"
@@ -27,6 +28,7 @@ def predict_json(project, model, instances, version=None):
     return response['predictions']
 
 def predict_fraud(instance):
+    instance=make_data.process_data(instance)
     if len(instance.shape)==1:
         instance=np.reshape(instance,(1,-1))
     preds=predict_json(CLOUD_PROJECT, 'fraud_prediction',instance.tolist())
