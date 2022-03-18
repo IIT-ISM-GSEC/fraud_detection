@@ -31,12 +31,12 @@ def predict_fraud(instance):
     instance=make_data.process_data(instance)
     if len(instance.shape)==1:
         instance=np.reshape(instance,(1,-1))
-    preds=predict_json(CLOUD_PROJECT, 'fraud_prediction',instance.tolist())
-    y=[]
-    for dict in preds:
-        for key in list(dict.keys()):
-            y.append(dict[key][0])
-    return y
+    preds=predict_json(CLOUD_PROJECT, 'fraud_less_features',instance.tolist())
+    # y=[]
+    # for dict in preds:
+    #     for key in list(dict.keys()):
+    #         y.append(dict[key][0])
+    return preds
 
     
 
