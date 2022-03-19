@@ -1,0 +1,30 @@
+Fraud Detection Module.
+
+Models Used :
+1. Custom Fully Connected Neural Network    0.54  (ROC-AUC Score)
+2. XGB Classifier (With Smote)              0.68  (ROC-AUC Score)
+
+
+Using Pretrained Model:
+
+To use the pretrained model (hosted on G-Cloud) follow the steps:
+
+1. Make a new jupyter notebook
+2. Make sure to install the requirements.txt in the kernal
+3. Import the predict file in the notebook
+4. Call the "predict_fraud" function of the predict file while passing the path of the json file of the 10-K form as an argument to the function.
+
+Example Calling:
+  
+import predict as pre
+result=pre.predict_fraud("example_file.json")
+print(result)
+
+Tranining The Model:
+
+1.Make sure all the files are pesent in the same directory .
+2.Open the notebook "train_and_host_model.ipynb" notebook and run the full notebook.
+3. At the last you will get a XGB Classiifer model created in your provided GOOGLE CLOUD Account.
+4. Use the goolgle cloud consiole to make a version of your model.
+5.Once the model is created you can use the predict script as mentined above to get results.
+
